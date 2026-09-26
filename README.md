@@ -93,8 +93,36 @@ Or invoke individual tools directly:
   ```bash
   python3 sarvam_suite.py --clone demo_source_speech.wav
   ```
-- **Conversational Chat (`sarvam-105b-conversations`)**:
-  ```bash
-  python3 sarvam_suite.py --ask "Explain ancestral property in simple Hindi."
-  ```
+---
+
+## 4. Vaani Vasiyat (Voice Testament) Pipeline
+
+The full multimodal Indic testamentary intake and drafting system pitched in the workshop:
+1. **Saaras v3 (ASR)**: Dialectal speech transcription and SHA-256 voice hashing.
+2. **Sarvam-105B (Paralegal Audit)**: Structuring informal narration into testamentary clauses while actively auditing for:
+   - Ambiguous boundary descriptions (khasra/survey numbers).
+   - Hindu coparcenary / ancestral vs. self-acquired land risks.
+   - Missing executors or omitted residuary estates.
+3. **Mayura (Translation)**: Compiles statutory bilingual legal will (Section 63 of Indian Succession Act, 1925).
+4. **Bulbul v3 (Audio Readback)**: Synthesizes high-fidelity speech reading back the drafted clauses to illiterate/elderly testators for verbal verification.
+5. **Cryptographic Merkle Anchor**: Computes Merkle Root across Audio Recording, Saaras Transcript, Witness Attestations, and Legal Deed for Section 63 BSA / 65B IEA electronic admissibility.
+
+### Run the complete demo:
+```bash
+python3 vaani_cli.py --demo
+```
+
+### Run on your own voice recording:
+```bash
+python3 vaani_cli.py \
+  --audio /path/to/testator_recording.wav \
+  --target-lang hi-IN \
+  --clarifications "The Rampur land is self-acquired. Hariram is the executor."
+```
+
+Generated deliverables are saved to `./vaani_output/`:
+- `*_testament.html` (Printable bilingual legal deed with thumb impression and witness signature boxes)
+- `*_manifest.json` (Cryptographic Merkle tree package with leaf hashes)
+- `*_readback.wav` (Native audio confirmation track)
+
 

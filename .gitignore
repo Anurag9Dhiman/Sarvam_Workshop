@@ -6,3 +6,5 @@ demo_source_speech.wav
 *.mp3
 *.srt
 
+__pycache__/
+*.pyc
