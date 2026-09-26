@@ -70,3 +70,31 @@ Outputs are automatically saved into `./dubbed_outputs/`:
 - `.mp4` (dubbed video)
 - `.wav` (mastered dubbed audio track)
 - `.srt` (synchronized subtitles in target language)
+
+---
+
+## 3. Multi-Engine Test Suite (`sarvam_suite.py`)
+
+Run live smoke tests across all 5 core Sarvam engines:
+```bash
+python3 sarvam_suite.py --test-all
+```
+
+Or invoke individual tools directly:
+- **Speech-to-Text (`Saaras v3`)**:
+  ```bash
+  python3 sarvam_suite.py --stt dubbed_outputs/job_fda3b857_hi-IN_audio.wav
+  ```
+- **Translation & Hinglish Code-Mixing (`Mayura`)**:
+  ```bash
+  python3 sarvam_suite.py --translate "Please submit your land registration papers by tomorrow."
+  ```
+- **Direct Voice Cloning (`POST /voices/clone`)**:
+  ```bash
+  python3 sarvam_suite.py --clone demo_source_speech.wav
+  ```
+- **Conversational Chat (`sarvam-105b-conversations`)**:
+  ```bash
+  python3 sarvam_suite.py --ask "Explain ancestral property in simple Hindi."
+  ```
+
