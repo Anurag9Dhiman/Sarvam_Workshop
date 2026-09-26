@@ -1,0 +1,8 @@
+.env
+dubbed_outputs/
+demo_source_speech.wav
+*.mp4
+*.wav
+*.mp3
+*.srt
+
